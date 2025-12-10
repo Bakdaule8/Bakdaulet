@@ -1,13 +1,30 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+public class Main {
+    public static void main(String[] args) {
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+        // Create Question objects
+        Question q1 = new Question("2+2=?", "4", 5);
+        Question q2 = new Question("Capital of France?", "Paris", 5);
+
+        // Print questions
+        q1.printQuestion();
+        q2.printQuestion();
+
+        // Create Candidate objects
+        Candidate c1 = new Candidate("Bek", 18, 85.5);
+        Candidate c2 = new Candidate("Dias", 19, 90.0);
+
+        // Print candidates
+        c1.printInfo();
+        c2.printInfo();
+
+        // Compare candidates (scores)
+        System.out.println("Is c1 score equal to c2? "
+                + (c1.getScore() == c2.getScore()));
+
+        // Create Exam object
+        Exam exam = new Exam("Java Programming", 60, c1);
+
+        // Print exam info
+        exam.printExamInfo();
     }
 }
