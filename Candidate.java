@@ -1,39 +1,38 @@
-public class Candidate {
-    private String name;
-    private int age;
+import java.util.Objects;
+
+public class Candidate extends Person {
     private double score;
 
     public Candidate(String name, int age, double score) {
-        this.name = name;
-        this.age = age;
+        super(name, age);
         this.score = score;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public double getScore() {
         return score;
     }
 
-    public void setScore(double score) {
-        this.score = score;
+    @Override
+    public String getRole() {
+        return "Candidate";
     }
 
-    public void printInfo() {
-        System.out.println(name + " (" + age + " years), Score: " + score);
+    @Override
+    public String toString() {
+        return name + " (" + age + "), score=" + score;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Candidate)) return false;
+        Candidate that = (Candidate) o;
+        return Double.compare(that.score, score) == 0 &&
+                name.equals(that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, score);
     }
 }

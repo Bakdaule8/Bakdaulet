@@ -1,42 +1,35 @@
+import java.util.*;
+
 public class Exam {
     private String subject;
-    private int duration;
-    private Candidate candidate;
+    private List<Question> questions = new ArrayList<>();
 
-    public Exam(String subject, int duration, Candidate candidate) {
-        this.subject = subject;
-        this.duration = duration;
-        this.candidate = candidate;
-    }
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
+    public Exam(String subject) {
         this.subject = subject;
     }
 
-    public int getDuration() {
-        return duration;
+    public void addQuestion(Question q) {
+        questions.add(q);
     }
 
-    public void setDuration(int duration) {
-        this.duration = duration;
+    public void sortByPoints() {
+        questions.sort(Comparator.comparingInt(Question::getPoints));
     }
 
-    public Candidate getCandidate() {
-        return candidate;
+    public List<Question> filterByPoints(int min) {
+        List<Question> result = new ArrayList<>();
+        for (Question q : questions) {
+            if (q.getPoints() >= min) {
+                result.add(q);
+            }
+        }
+        return result;
     }
 
-    public void setCandidate(Candidate candidate) {
-        this.candidate = candidate;
-    }
-
-    public void printExamInfo() {
-        System.out.println("Exam subject: " + subject);
-        System.out.println("Duration: " + duration + " minutes");
-        System.out.print("Candidate: ");
-        candidate.printInfo();
+    public void printExam() {
+        System.out.println("Exam: " + subject);
+        for (Question q : questions) {
+            System.out.println(q);
+        }
     }
 }

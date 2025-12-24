@@ -1,30 +1,27 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
-        // Create Question objects
-        Question q1 = new Question("2+2=?", "4", 5);
-        Question q2 = new Question("Capital of France?", "Paris", 5);
+        System.out.print("Candidate name: ");
+        String name = sc.nextLine();
 
-        // Print questions
-        q1.printQuestion();
-        q2.printQuestion();
+        System.out.print("Age: ");
+        int age = sc.nextInt();
 
-        // Create Candidate objects
-        Candidate c1 = new Candidate("Bek", 18, 85.5);
-        Candidate c2 = new Candidate("Dias", 19, 90.0);
+        System.out.print("Score: ");
+        double score = sc.nextDouble();
 
-        // Print candidates
-        c1.printInfo();
-        c2.printInfo();
+        Candidate c = new Candidate(name, age, score);
 
-        // Compare candidates (scores)
-        System.out.println("Is c1 score equal to c2? "
-                + (c1.getScore() == c2.getScore()));
+        Exam exam = new Exam("Online Java Exam");
+        exam.addQuestion(new Question("2+2=?", 5));
+        exam.addQuestion(new Question("OOP principles?", 10));
 
-        // Create Exam object
-        Exam exam = new Exam("Java Programming", 60, c1);
+        exam.sortByPoints();
+        exam.printExam();
 
-        // Print exam info
-        exam.printExamInfo();
+        System.out.println("Candidate info: " + c);
     }
 }
