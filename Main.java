@@ -1,14 +1,18 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
-        Device d1 = new Phone();
-        Device d2 = new Laptop();
+        Exam exam = new Exam("OOP Exam");
 
-        d1.getDevice(); // This is a phone
-        d2.getDevice(); // This is a laptop
+        System.out.print("Question text: ");
+        String text = sc.nextLine();
 
+        System.out.print("Points: ");
+        int points = sc.nextInt();
 
-        Phone p = new Phone().getDevice();
-        Laptop l = new Laptop().getDevice();
+        exam.addQuestion(new Question(text, points));
+        exam.printExam();
     }
 }
